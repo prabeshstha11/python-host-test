@@ -3,12 +3,15 @@ import time
 from datetime import datetime
 import os
 import schedule
+import pytz
 from keep_alive import keep_alive
 
 keep_alive()
 
+tz = pytz.timezone('Asia/Kathmandu')
+
 def send_reminder():
-    current_hour = datetime.now().hour
+    current_hour = datetime.now(tz).hour
 
     if 5 <= current_hour <= 22:
         try:
