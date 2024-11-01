@@ -12,7 +12,6 @@ tz = pytz.timezone('Asia/Kathmandu')
 
 def send_reminder():
     current_hour = datetime.now(tz).hour
-
     if 5 <= current_hour <= 22:
         try:
             bot.send_message(chat_id, "Time to drink some water! Stay hydrated 💧")
@@ -28,9 +27,16 @@ chat_id = os.environ.get('CHAT_ID')
 
 bot = telebot.TeleBot(bot_token)
 
-schedule.every().hour.at(":00").do(job)
+# Schedule hourly job
+schedule.every().hour.do(job)
 
 if __name__ == "__main__":
+    try:
+        bot.send_message(chat_id, "Bot is connected and active.")
+        print("Test message sent successfully!")
+    except Exception as e:
+        print(f"Failed to send test message: {e}")
+
     while True:
         schedule.run_pending()
         time.sleep(1)
