@@ -1,10 +1,8 @@
 import telebot
 import time
 from datetime import datetime
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
 bot_token = os.getenv('BOT_TOKEN')
 chat_id = os.getenv('CHAT_ID')
 
@@ -17,6 +15,6 @@ def send_reminder():
         bot.send_message(chat_id, "Time to drink some water! Stay hydrated 💧")
 
 while True:
-    print("Test")
+    print("Testing...")
     send_reminder()
     time.sleep(3600)
