@@ -17,8 +17,8 @@ def send_reminder():
 def job():
     send_reminder()
 
-bot_token = os.getenv('BOT_TOKEN')
-chat_id = os.getenv('CHAT_ID')
+bot_token = os.environ.get('BOT_TOKEN')
+chat_id = os.environ.get('CHAT_ID')
 
 bot = telebot.TeleBot(bot_token)
 
