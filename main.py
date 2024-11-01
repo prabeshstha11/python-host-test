@@ -3,6 +3,9 @@ import time
 from datetime import datetime
 import os
 import schedule
+from keep_alive import keep_alive
+
+keep_alive()
 
 def send_reminder():
     current_hour = datetime.now().hour
